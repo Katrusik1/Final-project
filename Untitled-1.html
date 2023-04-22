@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html land="en">
+
+<head>
+    <title>Algoritms</title>
+    <link rel="stylesheet" type="text/css" href="stil.css">
+</head>
+
+<body>
+    <div id="mainPage" class="mainStyle" style="height: 970px; width: 1900px; padding: 1px;">
+        <div style="position: relative; top: 300px;">
+            <h1 class="font" style="font-size: 65px;">Choose your algoritm</h1>
+            <p>
+                <a href="#AstarBlock"><button class="styleButtonMain">A star</button></a>
+                <a href="#NeuralNetworkBlock"><button class="styleButtonMain">Neural network</button></a>
+                <a href="#ClusteringBlock"><button class="styleButtonMain">Clustering</button></a>
+            </p>
+            <p>
+                <a href="#AntBlock"><button class="styleButtonMain">Ant algorithm</button></a>
+                <button class="styleButtonMain">Blablabla</button>
+            </p>
+        </div>
+    </div>
+
+    <div id="AstarBlock">
+        <div style="width: 900px; height: 970px;position: relative; left: 20px;">
+            <h2 style="font-size: 65px; position: relative; left: 30px;">Astar algorithm</h2>
+            <p style="font-size: 25px;">Enter the size of the maze: <input type="text" id="size" value="7" class="inputText"></p>
+            <p>
+                <button class="styleButton" onclick="generateMap()">Create a new map</button>
+                <button class="styleButton" onclick="createPrimmLabyrinth()">Create a labyrinth</button>
+            </p>
+            <p style="font-size: 25px;">Select the starting point, then the end point, then arrange the impassable cells and start the path search</p>
+            <p><button class="styleButtonPath" style="position: relative; left: 250px; top: 40px;" onclick="findPath()">Path generation</button></p>
+            <a href="#mainPage"><button class="styleButton" style="position: relative; top: 300px;">Go to the main page</button></a>
+        </div>
+
+        <div style="width: 760px; height:760px; position: relative; left: 990px; bottom: 860px;">
+            <table id="table"></table>
+        </div>
+        <script type="text/javascript" src="astar.js"></script>
+    </div>
+
+    <div id="NeuralNetworkBlock">
+        <h2 style="font-size: 65px; position: relative; left: 30px;">Neural network</h2>
+        <div style="width: 900px; height: 800px;position: relative; left: 20px;">
+            <p style="font-size: 25px;">Here you can draw a number and then you will get the answer in the form of a digit</p>
+            <a href="#mainPage"><button class="styleButton" style="position: relative; top: 550px;">Go to the main page</button></a>
+        </div>
+
+        <canvas class="canvas" id="mycanv" width="550" height="550" style="border-collapse: collapse; border: 1px solid black; position: relative; bottom: 800px; left: 1100px;"></canvas>
+        <div style="position: relative; bottom: 790px; left: 1400px;">
+            <button class="styleButton" id="clear">Очистка</button>
+            <button class="styleButton" id="calculating">Вывод</button>
+        </div>
+        <p><input class="input" id="input" size="17" style="height: 100px; width: 100px; background-color: transparent; border: 1px solid black; position: relative; bottom: 1350px; left: 50px; font-family: courier; font-size: 100px;" size="10" value=""></p>
+        <script src="neural_network.js"></script>
+    </div>
+
+    <div id="ClusteringBlock" style="font-family: courier;">
+        <h2 style="font-size: 65px; position: relative; left: 30px; bottom: 20px;">Clustering</h2>
+
+        <canvas id="CanvasKmeans" width="550" height="550" style="position: relative; left: 650px; border-collapse: collapse; border: 1px solid black; background-color: transparent;"></canvas>
+        <p style="position: relative; left: 715px;bottom: 20px; font-size: 40px;">Clustering K-means</p>
+
+        <canvas id="CanvasHierarchy" width="550" height="550" style="position: relative; left: 1250px; bottom: 682px; border-collapse: collapse; border: 1px solid black; background-color: transparent;"></canvas>
+        <p style="position: relative; left: 1275px; bottom: 700px; font-size: 40px;">Clustering Heirarchy</p>
+
+        <p style="position: relative; bottom: 1400px; font-size: 35px;">Clusters amount: <input type="text" min="2" max="10" style="height: 30px; width: 30px;" id="count" value="2" onchange="document.getElementById('countValue').innerHTML = this.value;"></p>
+        <button class="styleButtonMain" id="claster" style="position: relative; bottom: 1400px; left: 30px;" onclick="clusterization()">Clusterize!</button>
+        <button class="styleButtonMain" id="clearMap" style="position: relative; bottom:1400px; left: 60px;" onclick="clearCanvas()">Clear</button>
+
+        <a href="#mainPage"><button class="styleButton" style="position: relative; right: 415px; bottom: 800px;">Go to the main page</button></a>
+
+        <script type="text/javascript" src="Clasters.js"></script>
+        <script type="text/javascript" src="Kmeans.js"></script>
+        <script type="text/javascript" src="Hierarchy.js"></script>
+    </div>
+
+    <div id="AntBlock">
+        <h2 style="font-size: 65px; position: relative; left: 30px; bottom: 20px;">Ant Algorithm</h2>
+
+        <script src="ant.js" defer></script>
+
+
+        <div class="main">
+            <div class="container">
+                <div class="row">
+                    <div class="container-canvas" id="container-canvas" style="position: relative ; left: 300px;  border: 1px solid black;">
+                        <canvas id="canvas_1"></canvas>
+                    </div>
+
+                    <div class="preferences" style="position: relative; right: 350px; bottom: 680px; border: 1px solid black;">
+                        <div class="buttons-container">
+                            <button id="Start" class="styleButton">Start</button>
+                            <button id="clearButton" class="styleButton" onclick="clearAll()">Clear</button>
+                        </div>
+                        <div id="iterationsNumber" class="RangeViewer">
+                            <p id="iterationsCounter" class="RangeText">Number of iterations: 2000</p>
+                            <input class="Range" id="iterationsRange" type="range" min="10" max="10000" value="2000" oninput="inputRange('iterations')">
+                        </div>
+                        <div id="pheromoneQ" class="RangeViewer">
+                            <p id="pheromoneQCounter" class="RangeText">Pheromone addition constant: 4</p>
+                            <input class="Range" id="pheromoneQRange" type="range" min="1" max="10" value="4" step="1" oninput="inputRange('pheromoneQ')">
+                        </div>
+                        <div id="pheromoneR" class="RangeViewer">
+                            <p id="pheromoneRCounter" class="RangeText">Amount of remaining pheromone: 65%</p>
+                            <input class="Range" id="pheromoneRRange" type="range" min="51" max="100" value="65" step="1" oninput="inputRange('pheromoneR')">
+                        </div>
+                        <div id="beta" class="RangeViewer">
+                            <p id="betaCounter" class="RangeText">the degree of consideration of the edge length: 3</p>
+                            <input class="Range" id="betaRange" type="range" min="1" max="4" value="3" step="1" oninput="inputRange('beta')">
+                        </div>
+                        <div id="alfa" class="RangeViewer">
+                            <p id="alfaCounter" class="RangeText">the degree of accounting for the pheromone count: 1</p>
+                            <input class="Range" id="alfaRange" type="range" min="1" max="4" value="1" step="1" oninput="inputRange('alfa')">
+                        </div>
+                        <div style="position: relative; left: 20px;">We use Euclid distance metric</div>
+                    </div>
+                    <a href="#mainPage"><button class="styleButton" style="position: relative; bottom: 500px; right: 430px;">Go to the main page</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
